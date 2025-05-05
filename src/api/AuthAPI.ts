@@ -1,6 +1,6 @@
 import { isAxiosError } from "axios";
 import api from "../lib/axios";
-import { AuthLogInForm, AuthSingUpForm, ConfirmAccount } from "../types";
+import { AuthLogInForm, AuthSingUpForm, ConfirmAccount, ForgotPassword, ResetPasswordData } from "../types";
 
 export async function createAccount(formData : AuthSingUpForm) {
     try {
@@ -31,6 +31,42 @@ export async function confirmAccount(token : ConfirmAccount) {
     try {
         const url = '/auth/confirm-account'
         const {data} = await api.post(url, token)
+        return data
+    } catch (error) {
+        if(isAxiosError(error) && error.response) {
+            throw new Error(error.response.data.error)
+        }
+    }
+}
+
+export async function forgotPassword(email : ForgotPassword) {
+    try {
+        const url = '/auth/forgot-password'
+        const {data} = await api.post(url, email)
+        return data
+    } catch (error) {
+        if(isAxiosError(error) && error.response) {
+            throw new Error(error.response.data.error)
+        }
+    }
+}
+
+export async function validateToken(token : ConfirmAccount) {
+    try {
+        const url = '/auth/validate-token'
+        const {data} = await api.post(url, token)
+        return data
+    } catch (error) {
+        if(isAxiosError(error) && error.response) {
+            throw new Error(error.response.data.error)
+        }
+    }
+}
+
+export async function resetPassword(formData : ResetPasswordData ) {
+    try {
+        const url = '/auth/reset-password'
+        const {data} = await api.post(url, formData)
         return data
     } catch (error) {
         if(isAxiosError(error) && error.response) {

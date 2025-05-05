@@ -6,9 +6,11 @@ import ExpensesView from "./views/app/ExpensesView";
 import AssetsView from "./views/app/AssetsView";
 import LiabilitiesView from "./views/app/LiabilitiesView";
 import AuthLayout from "./layouts/AuthLayout";
-import SingUpForm from "./components/auth/SingUpForm";
-import LogInForm from "./components/auth/LogInForm";
-import ConfirmAccount from "./components/auth/ConfirmAccount";
+import SingUpView from "./views/auth/SingUpView";
+import LogInView from "./views/auth/LogInView";
+import ConfirmAccountView from "./views/auth/ConfirmAccountView";
+import ForgotPasswordView from "./views/auth/ForgotPasswordView";
+import ResetPasswordView from "./views/auth/ResetPasswordView";
 
 export default function Router() {
   return (
@@ -23,9 +25,11 @@ export default function Router() {
         </Route>
 
         <Route element={<AuthLayout />}>
-          <Route path="/auth/sing-up" element={<SingUpForm />}/>
-          <Route path="/auth/log-in" element={<LogInForm />}/>
-          <Route path="/auth/confirm-account" element={<ConfirmAccount />}/>
+          <Route path="/auth/sing-up" element={<SingUpView />}/>
+          <Route path="/auth/log-in" element={<LogInView />}/>
+          <Route path="/auth/confirm-account" element={<ConfirmAccountView />}/>
+          <Route path="/auth/forgot-password" element={<ForgotPasswordView />}/>
+          <Route path="/auth/reset-password" element={<ResetPasswordView />}/>
         </Route>
       </Routes>
     </BrowserRouter>

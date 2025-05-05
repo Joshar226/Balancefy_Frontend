@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form"
-import ErrorMessage from "../ErrorMessage"
+import ErrorMessage from "../../components/ErrorMessage"
 import { AuthLogInForm } from "../../types"
 import { Link, useNavigate } from "react-router-dom"
 import { useMutation } from "@tanstack/react-query"
 import { login } from "../../api/AuthAPI"
 import { toast } from "react-toastify"
 
-export default function LogInForm() {
+export default function LogInView() {
 
   const navigate = useNavigate()
 
@@ -82,9 +82,9 @@ export default function LogInForm() {
         >Sing Up</Link>
 
         <Link 
-          to={'/auth/reset-password'}
+          to={'/auth/forgot-password'}
           className="logo-font text-white text-xl hover:text-gray-400"
-        >Resset Password</Link>
+        >Forgot Password?</Link>
     </>
   )
 }

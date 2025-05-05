@@ -97,3 +97,6 @@ export type Auth = z.infer<typeof authSchema>
 export type AuthSingUpForm = Pick<Auth, 'name' | 'email' | 'password' | 'password_confirmation'>
 export type AuthLogInForm = Pick<Auth, 'email' | 'password'>
 export type ConfirmAccount = Pick<Auth, 'token'>
+export type ForgotPassword = Pick<Auth, 'email'>
+export type ResetPasswordType = Pick<Auth, 'password' | 'password_confirmation'>
+export type ResetPasswordData = Pick<Auth, 'password' | 'password_confirmation' | 'token'>

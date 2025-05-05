@@ -3,10 +3,10 @@ import { useMutation } from "@tanstack/react-query"
 import { createAccount } from "../../api/AuthAPI"
 import { toast } from "react-toastify"
 import { AuthSingUpForm } from "../../types"
-import ErrorMessage from "../ErrorMessage"
+import ErrorMessage from "../../components/ErrorMessage"
 import { Link } from "react-router-dom"
 
-export default function SingUpForm() {
+export default function SingUpView() {
     const initialValues : AuthSingUpForm = {
         name: '',
         email: '',
@@ -106,9 +106,9 @@ export default function SingUpForm() {
         >Log In</Link>
 
         <Link 
-            to={'/auth/reset-password'}
+            to={'/auth/forgot-password'}
             className="logo-font text-white text-xl hover:text-gray-400"
-        >Resset Password</Link>
+        >Forgot Password?</Link>
     </>
   )
 }
