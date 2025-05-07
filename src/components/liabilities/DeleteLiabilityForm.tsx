@@ -3,15 +3,23 @@ import { Liability } from "../../types"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { deleteLiabilitybyId } from "../../api/LiabilityAPI"
 import { toast } from "react-toastify"
+import { useEffect } from "react"
 
 type DeleteLiabilityFormProps = {
   liability: Liability
+  canEdit: boolean
 }
 
-export default function DeleteLiabilityForm({liability} : DeleteLiabilityFormProps) {
+export default function DeleteLiabilityForm({liability, canEdit} : DeleteLiabilityFormProps) {
   const location = useLocation()
   const navigate = useNavigate()
   const queryClient = useQueryClient()
+
+    useEffect(() => {
+      if(!canEdit) {
+        navigate('/404')
+      }
+    }, [canEdit, navigate])
 
   const {mutate} = useMutation({
     mutationFn: deleteLiabilitybyId,

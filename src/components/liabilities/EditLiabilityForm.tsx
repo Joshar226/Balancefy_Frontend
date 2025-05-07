@@ -5,17 +5,24 @@ import ErrorMessage from "../ErrorMessage"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { updateLiabilityById } from "../../api/LiabilityAPI"
 import { toast } from "react-toastify"
+import { useEffect } from "react"
 
 type EditLiabilityFormProps = {
-    liability: Liability
+  liability: Liability
+  canEdit: boolean
 }
 
-export default function EditLiabilityForm({liability} : EditLiabilityFormProps) {  
+export default function EditLiabilityForm({liability, canEdit} : EditLiabilityFormProps) {  
   const location = useLocation()
   const navigate = useNavigate()
-
   const queryClient = useQueryClient()
   
+    useEffect(() => {
+      if(!canEdit) {
+        navigate('/404')
+      }
+    }, [canEdit, navigate])
+
   const initialValues : LiabilityForm = {
     title: liability.title,
     value: liability.value

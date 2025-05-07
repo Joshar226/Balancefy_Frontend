@@ -6,7 +6,8 @@ export const incomeSchema = z.object({
     _id: z.string(),
     title: z.string(),
     value: z.string(),
-    date: z.string()
+    date: z.string(),
+    owner: z.string()
 })
 
 export const dashboardIncomesSchema = z.array(incomeSchema)
@@ -23,7 +24,8 @@ export const expenseSchema = z.object({
     _id: z.string(),
     title: z.string(),
     value: z.string(),
-    date: z.string()
+    date: z.string(),
+    owner: z.string()
 })
 
 export const dashboardExpensesSchema = z.array(expenseSchema)
@@ -39,7 +41,8 @@ export type ExpenseForm = Pick<Expense, 'title' | 'value'>
 export const assetSchema = z.object({
     _id: z.string(),
     title: z.string(),
-    value: z.string()
+    value: z.string(),
+    owner: z.string()
 })
 
 export const dashboardAssetsSchema = z.array(assetSchema)
@@ -55,7 +58,8 @@ export type AssetForm = Pick<Asset, 'title' | 'value'>
 export const liabilitySchema = z.object({
     _id: z.string(),
     title: z.string(),
-    value: z.string()
+    value: z.string(),
+    owner: z.string()
 })
 
 export const dashboardLiabilitiesSchema = z.array(liabilitySchema)
@@ -93,10 +97,32 @@ export const authSchema = z.object({
     token: z.string()
 })
 
+export const updatePasswordSchema = authSchema.pick({
+    password: true,
+    password_confirmation: true
+}).extend({
+    current_password: z.string()
+})
+
 export type Auth = z.infer<typeof authSchema>
+export type UpdatePasswordType = z.infer<typeof updatePasswordSchema>
+
 export type AuthSingUpForm = Pick<Auth, 'name' | 'email' | 'password' | 'password_confirmation'>
 export type AuthLogInForm = Pick<Auth, 'email' | 'password'>
 export type ConfirmAccount = Pick<Auth, 'token'>
 export type ForgotPassword = Pick<Auth, 'email'>
 export type ResetPasswordType = Pick<Auth, 'password' | 'password_confirmation'>
 export type ResetPasswordData = Pick<Auth, 'password' | 'password_confirmation' | 'token'>
+
+
+
+
+//USER
+export const userSchema = authSchema.pick({
+    _id: true,
+    name: true,
+    email: true
+})
+
+export type User = z.infer<typeof userSchema>
+export type ProfileForm = Pick<User, 'name' | 'email'>

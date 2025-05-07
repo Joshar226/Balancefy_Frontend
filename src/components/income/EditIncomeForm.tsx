@@ -5,16 +5,23 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateIncomeById } from "../../api/IncomeAPI";
 import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 type EditIncomeFormProps = {
     income: Income
+    canEdit: boolean
 }
 
-export default function EditIncomeForm({income} : EditIncomeFormProps) {
+export default function EditIncomeForm({income, canEdit} : EditIncomeFormProps) {
     const location = useLocation()
     const navigate = useNavigate()
-    
     const queryClient = useQueryClient()
+    
+    useEffect(() => {
+        if(!canEdit) {
+            navigate('/404')
+        }
+    }, [canEdit, navigate])
     
 
     const initialValues : IncomeForm = {

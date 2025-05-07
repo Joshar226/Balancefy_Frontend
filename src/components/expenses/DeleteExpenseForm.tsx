@@ -3,16 +3,24 @@ import { Expense } from "../../types"
 import { useLocation, useNavigate } from "react-router-dom"
 import { deleteExpenseById } from "../../api/ExpenseAPI"
 import { toast } from "react-toastify"
+import { useEffect } from "react"
 
 type DeleteExpenseFormProps = {
   expense: Expense
+  canEdit: boolean
 }
 
-export default function DeleteExpenseForm({expense} : DeleteExpenseFormProps) {
+export default function DeleteExpenseForm({expense, canEdit} : DeleteExpenseFormProps) {
   const location = useLocation()
   const navigate = useNavigate()
   const queryClient = useQueryClient()
   
+    useEffect(() => {
+      if(!canEdit) {
+        navigate('/404')
+      }
+    }, [canEdit, navigate])
+
   const {mutate} = useMutation({
     mutationFn: deleteExpenseById,
     onError: error => toast.error(error.message),

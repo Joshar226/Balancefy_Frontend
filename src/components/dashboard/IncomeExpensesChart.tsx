@@ -30,7 +30,7 @@ export default function IncomeExpenseChart() {
               data: result,
               innerRadius: 45,
               outerRadius: 100,
-              paddingAngle: 2,
+              paddingAngle: 1,
               cornerRadius: 5,
               startAngle: -45,
               endAngle: 360,

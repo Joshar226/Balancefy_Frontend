@@ -5,17 +5,24 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { updateAssetById } from "../../api/AssetAPI"
 import { toast } from "react-toastify"
 import { useLocation, useNavigate } from "react-router-dom"
+import { useEffect } from "react"
 
 type EditAssetFormProps = {
     asset: Asset
+    canEdit: boolean
 }
 
-export default function EditAssetForm({asset} : EditAssetFormProps) {
+export default function EditAssetForm({asset, canEdit} : EditAssetFormProps) {
     const location = useLocation();
     const navigate = useNavigate();
-  
     const queryClient = useQueryClient();
-    
+
+    useEffect(() => {
+        if(!canEdit) {
+            navigate('/404')
+        }
+    }, [canEdit, navigate])
+
     const initialValues : AssetForm = {
         title: asset.title,
         value: asset.value

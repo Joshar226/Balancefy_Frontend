@@ -3,15 +3,23 @@ import { Asset } from "../../types";
 import { useLocation, useNavigate } from "react-router-dom";
 import { deleteAssetById } from "../../api/AssetAPI";
 import { toast } from "react-toastify";
+import { useEffect } from "react";
 
 type DeleteAssetFormProps = {
-  asset: Asset;
+  asset: Asset
+  canEdit: boolean
 };
 
-export default function DeleteAssetForm({ asset }: DeleteAssetFormProps) {
+export default function DeleteAssetForm({asset, canEdit}: DeleteAssetFormProps) {
   const location = useLocation();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+
+    useEffect(() => {
+      if(!canEdit) {
+        navigate('/404')
+      }
+    }, [canEdit, navigate])
 
   const { mutate } = useMutation({
     mutationFn: deleteAssetById,

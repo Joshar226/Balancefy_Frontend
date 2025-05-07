@@ -11,6 +11,8 @@ import LogInView from "./views/auth/LogInView";
 import ConfirmAccountView from "./views/auth/ConfirmAccountView";
 import ForgotPasswordView from "./views/auth/ForgotPasswordView";
 import ResetPasswordView from "./views/auth/ResetPasswordView";
+import NotFoundView from "./views/NotFoundView";
+import ProfileData from "./components/auth/ProfileData";
 
 export default function Router() {
   return (
@@ -22,6 +24,7 @@ export default function Router() {
           <Route path="/expenses" element={<ExpensesView />} />
           <Route path="/assets" element={<AssetsView />} />
           <Route path="/liabilities" element={<LiabilitiesView />} />
+          <Route path="/profile" element={<ProfileData />}/>
         </Route>
 
         <Route element={<AuthLayout />}>
@@ -31,6 +34,9 @@ export default function Router() {
           <Route path="/auth/forgot-password" element={<ForgotPasswordView />}/>
           <Route path="/auth/reset-password" element={<ResetPasswordView />}/>
         </Route>
+
+
+        <Route path="/404" element={<NotFoundView />}/>
       </Routes>
     </BrowserRouter>
   )

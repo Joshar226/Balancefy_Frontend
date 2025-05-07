@@ -5,16 +5,23 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateExpenseById } from "../../api/ExpenseAPI";
 import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 type EditExpenseFormProps = {
   expense: Expense;
+  canEdit: boolean
 };
 
-export default function EditExpenseForm({ expense }: EditExpenseFormProps) {
+export default function EditExpenseForm({expense, canEdit}: EditExpenseFormProps) {
   const location = useLocation();
   const navigate = useNavigate();
-
   const queryClient = useQueryClient();
+
+    useEffect(() => {
+      if(!canEdit) {
+        navigate('/404')
+      }
+    }, [canEdit, navigate])
 
   const initialValues: ExpenseForm = {
     title: expense.title,

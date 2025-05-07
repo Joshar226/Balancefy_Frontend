@@ -3,15 +3,24 @@ import { Income } from "../../types"
 import { useLocation, useNavigate } from "react-router-dom"
 import { deleteIncomebyId } from "../../api/IncomeAPI"
 import { toast } from "react-toastify"
+import { useEffect } from "react"
 
 type DeleteIncomeFormProps = {
   income: Income
+  canEdit: boolean
+
 }
 
-export default function DeleteIncomeForm({income} : DeleteIncomeFormProps) {
+export default function DeleteIncomeForm({income, canEdit} : DeleteIncomeFormProps) {
   const location = useLocation()
   const navigate = useNavigate()
   const queryClient = useQueryClient()
+
+  useEffect(() => {
+    if(!canEdit) {
+      navigate('/404')
+    }
+  }, [canEdit, navigate])
 
   const {mutate} = useMutation({
     mutationFn: deleteIncomebyId,
