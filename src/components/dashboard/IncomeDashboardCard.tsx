@@ -17,7 +17,9 @@ export default function IncomeDashboardCard() {
   
   if(data)
   return (
-    <Link to={'/incomes'} className="bg-blue-600 text-center rounded-lg text-3xl text-white font-bold space-y-4 py-5 hover:bg-blue-700">
+    <Link to={'/incomes'} className="bg-blue-600 text-center flex flex-col justify-center rounded-lg text-xl text-white font-bold space-y-2 py-4 hover:bg-blue-700
+      md:text-3xl md:py-5 md:space-y-4
+    ">
       <h2>Incomes</h2>
       <h3>{formatCurrency(total)}</h3>
     </Link>

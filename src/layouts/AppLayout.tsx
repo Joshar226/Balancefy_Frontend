@@ -6,16 +6,13 @@ import { GiExpense } from "react-icons/gi";
 import { BsGraphUp } from "react-icons/bs";
 import { BsGraphDown } from "react-icons/bs";
 import { FaUserAlt } from "react-icons/fa";
-
-
-
-
-
-
+import { IoMenu } from "react-icons/io5";
+import { useState } from "react";
 
 export default function AppLayout() {
   const location = useLocation()
   const navigate = useNavigate()
+  const [sidebar, setSidebar] = useState(false)
 
   const {data: user} = useAuth()
 
@@ -46,11 +43,17 @@ export default function AppLayout() {
   if(user)
   return (
     <div className="flex">
-      <div className={`w-3xs h-[100vh] px-5 pt-5 flex flex-col justify-between ${currentColor}`}>
-        <div>
-          <Link to={'/'} className="logo-font text-white font-bold text-4xl text-center mb-15 block mt-7">Balancefy</Link>
+      <div onClick={() => setSidebar(!sidebar)} className="fixed ml-5 mt-3 lg:hidden z-20">
+        <IoMenu size={50}
+          color={`${sidebar ? 'white' : 'black'}`}
+        />
+      </div>
+      <div className={`${sidebar ? '-translate-x-0 ' : '-translate-x-full'} fixed z-10 top-0 left-0 h-screen transition-transform duration-500 transform ease-in-out flex flex-col justify-between pt-15 px-5
+        lg:static lg:translate-x-0 lg:w-3xs lg:px-5 lg:pt-5
+        ${currentColor}`}>
+        <div className={`${!sidebar && 'hidden'} lg:block`}>
+          <Link to={'/'} className=" logo-font text-white font-bold text-4xl text-center mb-15 block mt-7">Balancefy</Link>
           <div className="space-y-8">
-
             <Link to={'/'} className={`flex items-center justify-center gap-4 rounded-md py-2 cursor-pointer ${currectHoverColor}`}>
               <MdOutlineDashboard color="white" size={30}/>
               <p className={'text-white text-xl font-bold'}>Dashboard</p>
@@ -75,16 +78,15 @@ export default function AppLayout() {
               <BsGraphDown color="white" size={30}/>
               <p className={'text-white text-xl font-bold '}>Liabilities</p>
             </Link>
-
           </div>
         </div>
-        <Link to={'/profile'} className={`flex items-center justify-center gap-4 rounded-md py-2 mb-5 cursor-pointer ${currectHoverColor}`}>
+        <Link to={'/profile'} className={`${!sidebar ? 'hidden' : 'flex'} lg:flex items-center justify-center gap-4 rounded-md py-2 mb-5 cursor-pointer ${currectHoverColor}`}>
           <FaUserAlt color="white" size={30}/>
           <p className={'text-white text-xl font-bold'}>Profile</p>
         </Link>
       </div>
 
-      <div className="flex-1 p-[40px]">
+      <div className='flex-1 py-[70px] px-[25px] md:p-[40px]'>
         <Outlet />
       </div>
     </div>

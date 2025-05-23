@@ -17,7 +17,8 @@ export default function ExpenseDashboardCard() {
   
   if(data)
   return (
-    <Link to={'/expenses'} className="bg-red-700 text-center rounded-lg text-3xl text-white font-bold space-y-4 py-5 hover:bg-red-800">
+    <Link to={'/expenses'} className="bg-red-700 text-center flex flex-col justify-center rounded-lg text-xl text-white font-bold space-y-2 py-4 hover:bg-red-800
+      md:text-3xl md:py-5 md:space-y-4">
       <h2>Expenses</h2>
       <h3>{formatCurrency(total)}</h3>
     </Link>

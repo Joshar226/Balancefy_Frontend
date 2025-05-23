@@ -16,7 +16,8 @@ export default function AssetDashboardCard() {
 
   if(data)
   return (
-    <Link to={'/assets'} className="bg-green-700 text-center rounded-lg text-3xl text-white font-bold space-y-4 py-5 hover:bg-green-800">
+    <Link to={'/assets'} className="bg-green-700 text-center flex flex-col justify-center rounded-lg text-xl text-white font-bold space-y-2 py-4 hover:bg-green-800
+      md:text-3xl md:py-5 md:space-y-4">
       <h2>Assets</h2>
       <h3>{formatCurrency(total)}</h3>
     </Link>
