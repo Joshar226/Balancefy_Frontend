@@ -7,9 +7,12 @@ import LiabilityCard from "../../components/liabilities/LiabilityCard";
 import { useLocation } from "react-router-dom";
 import Modal from "../../components/Modal";
 import LiabilityData from "../../components/liabilities/LiabilityData";
+import { useStore } from "../../store";
 
 
 export default function LiabilitiesView() {
+    const setSidebar = useStore((state) => state.setSidebar)
+    setSidebar(false)
 
     const location = useLocation()
     const queryClient = useQueryClient()

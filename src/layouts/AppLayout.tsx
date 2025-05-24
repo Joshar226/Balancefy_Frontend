@@ -7,12 +7,13 @@ import { BsGraphUp } from "react-icons/bs";
 import { BsGraphDown } from "react-icons/bs";
 import { FaUserAlt } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
-import { useState } from "react";
+import { useStore } from "../store";
 
 export default function AppLayout() {
   const location = useLocation()
   const navigate = useNavigate()
-  const [sidebar, setSidebar] = useState(false)
+  const sidebar = useStore((state) => state.sidebar)
+  const setSidebar = useStore((state) => state.setSidebar)
 
   const {data: user} = useAuth()
 

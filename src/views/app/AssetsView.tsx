@@ -7,9 +7,13 @@ import CreateAssetForm from "../../components/assets/CreateAssetForm"
 import AssetCard from "../../components/assets/AssetCard"
 import Modal from "../../components/Modal"
 import AssetData from "../../components/assets/AssetData"
+import { useStore } from "../../store"
 
 
 export default function AssetsView() {
+    const setSidebar = useStore((state) => state.setSidebar)
+    setSidebar(false)
+    
     const location = useLocation()
     const queryClient = useQueryClient()
     

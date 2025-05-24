@@ -4,8 +4,11 @@ import IncomeDashboardCard from '../../components/dashboard/IncomeDashboardCard'
 import IncomeExpenseChart from '../../components/dashboard/IncomeExpensesChart';
 import LiabilityDashboardCard from '../../components/dashboard/LiabilityDashboardCard';
 import TotalBalanceChart from '../../components/dashboard/TotalBalanceChart';
+import { useStore } from '../../store';
 
 export default function DashboardView() {
+  const setSidebar = useStore((state) => state.setSidebar)
+  setSidebar(false)
 
   return (
     <>

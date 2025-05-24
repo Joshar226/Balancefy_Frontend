@@ -7,8 +7,12 @@ import { getExpenses } from "../../api/ExpenseAPI";
 import Spinner from "../../components/Spinner";
 import { formatCurrency } from "../../utils/utils";
 import { useLocation } from "react-router-dom";
+import { useStore } from "../../store";
 
 export default function ExpensesView() {
+    const setSidebar = useStore((state) => state.setSidebar)
+    setSidebar(false)
+    
     const location = useLocation()
     const queryClient = useQueryClient()
     

@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
 import DashboardView from "./views/app/DashboardView";
-import IncomeView from "./views/app/IncomeView";
+import IncomesView from "./views/app/IncomesView";
 import ExpensesView from "./views/app/ExpensesView";
 import AssetsView from "./views/app/AssetsView";
 import LiabilitiesView from "./views/app/LiabilitiesView";
@@ -20,7 +20,7 @@ export default function Router() {
       <Routes>
         <Route element={<AppLayout />}>
           <Route path="/" element={<DashboardView />} />
-          <Route path="/incomes" element={<IncomeView />} />
+          <Route path="/incomes" element={<IncomesView />} />
           <Route path="/expenses" element={<ExpensesView />} />
           <Route path="/assets" element={<AssetsView />} />
           <Route path="/liabilities" element={<LiabilitiesView />} />

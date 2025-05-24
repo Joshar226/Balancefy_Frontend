@@ -14,7 +14,7 @@ export default function IncomeDropdownMenu({id} : IncomeDropdownMenuProps) {
   const navigate = useNavigate()
 
   return (
-    <div className="w-52 text-right">
+    <div className="text-right">
       <Menu __demoMode={false}>
         <MenuButton className="text-white font-bold cursor-pointer">
           . . .
