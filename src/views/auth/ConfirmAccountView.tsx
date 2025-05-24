@@ -23,7 +23,7 @@ export default function ConfirmAccountView() {
   useEffect(() => {
     if(token)
     mutate({token})
-  }, [token])
+  }, [token, mutate])
   
   if(confirmed)
   return (

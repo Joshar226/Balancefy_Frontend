@@ -34,7 +34,8 @@ export default function UpdatePassword({setProfileView} : UpdatePasswordProps) {
     const handleUpdatePassword = (formData : UpdatePasswordType) => mutate(formData)
 
   return (
-    <div className="bg-[#18183d] rounded-2xl h-full w-[1000px] mx-auto py-20 px-10">
+    <div className="bg-[#18183d] rounded-2xl h-full w-full mx-auto py-10 px-7 mt-5
+      lg:py-20 lg:px-10 lg:mt-0">
 
 
         <div onClick={() => setProfileView(false)} className="inline-flex items-center cursor-pointer px-5 py-2 rounded-md gap-3 mb-5 hover:bg-blue-950 ">
@@ -93,7 +94,8 @@ export default function UpdatePassword({setProfileView} : UpdatePasswordProps) {
 
         <input 
             type="submit" 
-            className="text-white text-2xl font-bold bg-blue-900 px-5 py-1 rounded-md cursor-pointer hover:bg-blue-950"
+            className="text-white font-bold bg-blue-900 px-5 py-1 rounded-md cursor-pointer hover:bg-blue-950 w-full text-xl
+                lg:w-auto md:text-2xl"
             value='Update Password'
         />
         </form>
