@@ -31,21 +31,21 @@ export default function IncomesView() {
     <>
       <div className="flex flex-col xl:flex-row justify-around gap-4 mt-5
         md:gap-10 xl:mt-0"> 
-        <div className="w-full md:h-[150px] bg-gradient-to-b from-[#0040ff] to-[#547cff] py-3 rounded-2xl space-y-2 flex flex-col justify-center items-center
-          md:p-5 lg:items-start">
+        <div className="w-full bg-gradient-to-b from-[#0040ff] to-[#547cff] py-3 rounded-2xl space-y-2 flex flex-col justify-center items-center
+          md:p-5 md:h-[150px] lg:items-start">
           <h2 className="text-white font-bold text-lg
             md:text-3xl">Total Incomes</h2>
           <p className="text-white font-bold text-lg
             md:text-3xl">{formatCurrency(total)}</p>
         </div>
 
-        <div className="w-full md:h-[150px] bg-gradient-to-b from-[#0040ff] to-[#547cff] p-3 rounded-2xl space-y-2 flex flex-col justify-center
-          md:p-5">
+        <div className="w-full bg-gradient-to-b from-[#0040ff] to-[#547cff] p-3 rounded-2xl space-y-2 flex flex-col justify-center
+          md:p-5 md:h-[150px]">
           <CreateIncomeForm />
         </div>
       </div>
 
-      <div className=" grid grid-cols-2 gap-4 overflow-y-scroll max-h-[380px] mt-10
+      <div className="grid grid-cols-2 gap-4 overflow-y-scroll max-h-[380px] mt-10
         md:max-h-[500px] lg:max-h-[600px] xl:grid-cols-3 2xl:grid-cols-4">
         {data.map( income => <IncomeCard key={income._id} income={income}/>)}
       </div>
