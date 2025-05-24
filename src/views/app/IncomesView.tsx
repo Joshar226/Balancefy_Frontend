@@ -45,7 +45,7 @@ export default function IncomesView() {
         </div>
       </div>
 
-      <div className=" grid grid-cols-2 gap-4 overflow-y-scroll max-h-[450px] mt-10
+      <div className=" grid grid-cols-2 gap-4 overflow-y-scroll max-h-[380px] mt-10
         md:max-h-[500px] lg:max-h-[600px] xl:grid-cols-3 2xl:grid-cols-4">
         {data.map( income => <IncomeCard key={income._id} income={income}/>)}
       </div>
