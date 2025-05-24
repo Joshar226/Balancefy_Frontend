@@ -79,12 +79,13 @@ export default function AppLayout() {
               <BsGraphDown color="white" size={30}/>
               <p className={'text-white text-xl font-bold '}>Liabilities</p>
             </Link>
+
+            <Link to={'/profile'} className={`flex items-center justify-center gap-4 rounded-md py-2 cursor-pointer mt-20 ${currectHoverColor}`}>
+              <FaUserAlt color="white" size={30}/>
+              <p className={'text-white text-xl font-bold'}>Profile</p>
+            </Link>
           </div>
         </div>
-        <Link to={'/profile'} className={`${!sidebar ? 'hidden' : 'flex'} lg:flex items-center justify-center gap-4 rounded-md py-2 mb-5 cursor-pointer ${currectHoverColor}`}>
-          <FaUserAlt color="white" size={30}/>
-          <p className={'text-white text-xl font-bold'}>Profile</p>
-        </Link>
       </div>
 
       <div className='flex-1 py-[70px] px-[25px] md:p-[40px]'>
