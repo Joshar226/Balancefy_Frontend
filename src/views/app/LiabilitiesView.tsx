@@ -32,21 +32,18 @@ export default function LiabilitiesView() {
     <>
         <div className="flex flex-col xl:flex-row justify-around gap-4 mt-5
             md:gap-10 xl:mt-0">
-        <div>
             <div className="w-full bg-gradient-to-b from-[#ff7b00] to-[#ffb01d] py-3 rounded-2xl space-y-2 flex flex-col justify-center items-center
                 md:p-5 md:h-[150px] lg:items-start">
-            <h2 className="text-white font-bold text-lg
-                md:text-3xl">Total Liabilities</h2>
-            <p className="text-white font-bold text-lg
-                md:text-3xl">{formatCurrency(total)}</p>
+                <h2 className="text-white font-bold text-lg
+                    md:text-3xl">Total Liabilities</h2>
+                <p className="text-white font-bold text-lg
+                    md:text-3xl">{formatCurrency(total)}</p>
             </div>
-        </div>
-        <div>
+
             <div className="w-full bg-gradient-to-b from-[#ff7b00] to-[#ffb01d] p-3 rounded-2xl space-y-2 flex flex-col justify-center
                 md:p-5 md:h-[150px]">
                 <CreateLiabilityForm />
             </div>
-        </div>
         </div>
 
         <div className="grid grid-cols-2 gap-4 overflow-y-scroll max-h-[380px] mt-10
