@@ -63,7 +63,7 @@ export default function CreateExpenseForm() {
 
       <input
         type="submit"
-        value="Create Income"
+        value="Create Expense"
         className="col-span-2 text-white text-lg font-bold bg-red-900 py-2 rounded-xl cursor-pointer hover:bg-red-800"
       />
     </form>

@@ -8,7 +8,7 @@ export default function NotFoundView() {
         <h2 className="text-4xl">Not Found</h2>
       </div>
 
-      <Link to={'/auth/log-in'} className="bg-blue-900 py-2 px-5 mt-5 text-white text-xl font-bold rounded-md hover:bg-blue-950">Log In</Link>
+      <Link to={'/'} className="bg-blue-900 py-2 px-5 mt-5 text-white text-xl font-bold rounded-md hover:bg-blue-950">Log In</Link>
     </div>
   )
 }

@@ -8,6 +8,7 @@ import { BsGraphDown } from "react-icons/bs";
 import { FaUserAlt } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { useStore } from "../store";
+import { useEffect } from "react";
 
 export default function AppLayout() {
   const location = useLocation()
@@ -15,9 +16,11 @@ export default function AppLayout() {
   const sidebar = useStore((state) => state.sidebar)
   const setSidebar = useStore((state) => state.setSidebar)
 
-  const {data: user} = useAuth()
+  const {data: user, isError} = useAuth()
 
-  if(!user) navigate('/404')
+  useEffect(() => {
+    if(isError) navigate('/')
+  }, [isError])
   
   const colors : Record<string, string> = {
     dashboard: 'bg-[#18183d]',
@@ -55,7 +58,7 @@ export default function AppLayout() {
         <div className={`${!sidebar && 'hidden'} lg:block`}>
           <Link to={'/'} className=" logo-font text-white font-bold text-4xl text-center mb-15 block mt-7">Balancefy</Link>
           <div className="space-y-8">
-            <Link to={'/'} className={`flex items-center justify-center gap-4 rounded-md py-2 cursor-pointer ${currectHoverColor}`}>
+            <Link to={'/dashboard'} className={`flex items-center justify-center gap-4 rounded-md py-2 cursor-pointer ${currectHoverColor}`}>
               <MdOutlineDashboard color="white" size={30}/>
               <p className={'text-white text-xl font-bold'}>Dashboard</p>
             </Link>

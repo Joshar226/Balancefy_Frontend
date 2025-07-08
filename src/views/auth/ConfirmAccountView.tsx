@@ -15,7 +15,7 @@ export default function ConfirmAccountView() {
     onSuccess: () => {
       setConfirmed(true)
       setTimeout(() => {
-        navigate('/auth/log-in')
+        navigate('/')
       }, 3000);
     }
   })

@@ -27,7 +27,7 @@ export default function ResetPasswordForm({token} : ResetPasswordFormProps) {
       toast.success(data)
       reset()
       setTimeout(() => {
-        navigate('/auth/log-in')
+        navigate('/')
       }, 3000);
     }
   })

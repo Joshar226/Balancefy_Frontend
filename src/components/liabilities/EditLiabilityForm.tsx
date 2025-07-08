@@ -80,7 +80,7 @@ export default function EditLiabilityForm({liability, canEdit} : EditLiabilityFo
 
         <input 
             type="submit"
-            value='Edit Income'
+            value='Edit Liability'
             className='col-span-2 text-white text-lg font-bold bg-orange-700 py-2 rounded-xl cursor-pointer hover:bg-orange-800'
         />
     </form>

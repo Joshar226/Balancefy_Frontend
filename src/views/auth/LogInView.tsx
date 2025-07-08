@@ -5,11 +5,26 @@ import { Link, useNavigate } from "react-router-dom"
 import { useMutation } from "@tanstack/react-query"
 import { login } from "../../api/AuthAPI"
 import { toast } from "react-toastify"
+import { useAuth } from "../../hooks/useAuth"
+import { useEffect } from "react"
 
 export default function LogInView() {
 
   const navigate = useNavigate()
+  const {data : user} = useAuth()
 
+  useEffect(() => {
+    const token = localStorage.getItem('AUTH_TOKEN')
+    if(token) {
+      if(user) {
+        navigate('/dashboard')
+      }
+    }
+  }, [user])
+  
+
+
+  
   const initialValues : AuthLogInForm = {
     email: '',
     password: ''
@@ -20,9 +35,7 @@ export default function LogInView() {
   const {mutate} = useMutation({
     mutationFn: login,
     onError: error => toast.error(error.message),
-    onSuccess: () => {
-      navigate('/')
-    }
+    onSuccess: () => navigate('/dashboard')
   })
 
   const handleLogIn = (formData : AuthLogInForm) => mutate(formData)

@@ -101,7 +101,7 @@ export default function SingUpView() {
         </form>
 
         <Link 
-            to={'/auth/log-in'}
+            to={'/'}
             className="logo-font text-white text-xl hover:text-gray-400"
         >Log In</Link>
 

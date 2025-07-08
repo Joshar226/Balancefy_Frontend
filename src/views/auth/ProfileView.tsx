@@ -38,7 +38,9 @@ export default function ProfileView({user, setProfileView} : ProfileViewProps) {
   
   const handleLogOut = () => {
     localStorage.removeItem('AUTH_TOKEN')
-    navigate('/auth/log-in')
+    setTimeout(() => {
+      navigate('/')
+    }, 100);
   }
 
   return (

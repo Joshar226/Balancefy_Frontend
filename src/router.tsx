@@ -24,7 +24,7 @@ export default function Router() {
     <BrowserRouter>
       <Routes>
         <Route element={<AppLayout />}>
-          <Route path="/" element={<Suspense fallback={<Spinner/>}><DashboardView/></Suspense>} />
+          <Route path="/dashboard" element={<Suspense fallback={<Spinner/>}><DashboardView/></Suspense>} />
           <Route path="/incomes" element={<Suspense fallback={<Spinner/>}><IncomesView/></Suspense>} />
           <Route path="/expenses" element={<Suspense fallback={<Spinner/>}><ExpensesView/></Suspense>} />
           <Route path="/assets" element={<Suspense fallback={<Spinner/>}><AssetsView/></Suspense>} />
@@ -33,8 +33,8 @@ export default function Router() {
         </Route>
 
         <Route element={<AuthLayout />}>
+          <Route path="/" element={<Suspense fallback={<Spinner/>} ><LogInView/></Suspense>} />
           <Route path="/auth/sing-up" element={<Suspense fallback={<Spinner/>}><SingUpView/></Suspense>} />
-          <Route path="/auth/log-in" element={<Suspense fallback={<Spinner/>}><LogInView/></Suspense>} />
           <Route path="/auth/confirm-account" element={<Suspense fallback={<Spinner/>}><ConfirmAccountView/></Suspense>} />
           <Route path="/auth/forgot-password" element={<Suspense fallback={<Spinner/>}><ForgotPasswordView/></Suspense>} />
           <Route path="/auth/reset-password" element={<Suspense fallback={<Spinner/>}><ResetPasswordView/></Suspense>} />
